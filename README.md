@@ -72,3 +72,22 @@ Then open your browser and go to:
 ```
 http://127.0.0.1:8000
 ```
+
+--- 
+--- 
+---
+
+## Testing Using Pest
+Run following command to initialize testing db:
+```
+php artisan migrate --env=testing
+```
+
+Run following command to run tests:
+```
+php artisan test
+```
+additionaly you can run test for specific file:
+```
+php artisan test --filter=TestFile
+```

@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 use App\Enums\User\UserRole;
 use App\Helpers\UserHelpers;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\Users\StoreUserRequest;
 use App\Http\Requests\Users\ClientRequest;
 use App\Http\Requests\Users\TrainerRequest;
+use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\Client;
 use App\Models\Trainer;
 use App\Models\User;
@@ -19,7 +20,7 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
 
-    public function register(UserRequest $userRequest)
+    public function register(StoreUserRequest $userRequest)
     {
         try {
             $validated = $userRequest->validated();
@@ -31,6 +32,27 @@ class AuthController extends Controller
         }
     }
 
+    public function updateProfile(UpdateUserRequest $userRequest){
+        try {
+            $validated = $userRequest->validated();
+            $user = auth()->user();
+            if($validated['current_password']){
+                if(!Hash::check($validated['current_password'], $user->password)){
+                    return ResponseService::forbidden("current password is not correct" , code:403);
+                }
+            }
+
+            $user->update([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => $validated['new_password'] ? Hash::make($validated['new_password']) : $user->password,
+            ]);
+
+            return ResponseService::success("Profile updated successfully", $user, 200);
+        } catch (\Throwable $th) {
+            return ResponseService::error($th->getMessage());
+        }
+    }
 
 
     public function login(Request $request)
