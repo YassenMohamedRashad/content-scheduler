@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->text("image_url")->nullable();
             $table->string('title');
-            $table->string('content');
-            $table->dateTime('scheduled_time');
+            $table->text('content');
+            $table->dateTime('scheduled_time')->nullable();
             $table->enum('status' , PostStatusEnum::values())->default(PostStatusEnum::Draft);
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();

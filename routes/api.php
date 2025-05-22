@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\PostsController;
 use App\Http\Middleware\AuthWithThrottle;
 use Illuminate\Http\Request;
@@ -23,7 +24,13 @@ Route::middleware('throttle:api')->group(function () {
 
 
     Route::middleware('auth:sanctum')->group(function () {
+        // posts
         Route::apiResource('/posts', PostsController::class);
+
+        // platforms
+        Route::get('/platforms', [PlatformController::class, 'index']);
+        Route::post('/platforms/sync', [PlatformController::class, 'syncPlatforms']);
+        Route::delete('/platforms/{id}/unsync', [PlatformController::class, 'unsyncPlatform']);
     });
 });
 

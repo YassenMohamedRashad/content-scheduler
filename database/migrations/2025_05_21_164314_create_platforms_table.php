@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('platforms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type' , PlatformTypesEnum::values());
+            $table->enum('type', PlatformTypesEnum::values());
+            $table->integer('char_limit')->nullable();
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\PlatformEnums\PostPlatformsStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained('posts')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('platform_id')->constrained('platforms')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('platform_status')->default('pending');
+            $table->enum('platform_status' , PostPlatformsStatusEnum::values())->default(PostPlatformsStatusEnum::Draft);
             $table->timestamps();
         });
     }

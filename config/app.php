@@ -66,6 +66,10 @@ return [
     */
 
     'timezone' => 'UTC',
+    'aliases' => [
+        'DateTime' => App\Facades\DateTime::class,
+    ],
+
 
     /*
     |--------------------------------------------------------------------------

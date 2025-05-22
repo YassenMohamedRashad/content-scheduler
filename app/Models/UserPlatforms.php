@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Platform extends Model
+class UserPlatforms extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
 
-    public function posts()
+    public function user()
     {
-        return $this->hasMany(PostPlatform::class);
+        return $this->belongsTo(User::class);
     }
-
-    public function users()
+    public function platform()
     {
-        return $this->hasMany(UserPlatforms::class);
+        return $this->belongsTo(Platform::class);
     }
-    
 
 }

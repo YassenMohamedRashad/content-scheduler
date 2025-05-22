@@ -2,12 +2,13 @@
 
 namespace App\Http\Requests\Posts;
 
+use App\Http\Requests\ApiFormRequest;
 use App\Services\ResponseService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 
-class UpdatePostRequest extends FormRequest
+class UpdatePostRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -36,8 +37,4 @@ class UpdatePostRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
-        throw new ValidationException($validator, ResponseService::error("Validation error", $validator->errors()));
-    }
 }

@@ -18,6 +18,14 @@ class PlatformSeeder extends Seeder
             Platform::create([
                 "name" => $type,
                 "type" => $type,
+                "char_limit" => match ($type) {
+                    PlatformTypesEnum::Facebook->value => 63206,
+                    PlatformTypesEnum::Instagram->value => 2200,
+                    PlatformTypesEnum::LinkedIn->value => 3000,
+                    PlatformTypesEnum::Twitter->value => 280,
+                    PlatformTypesEnum::TikTok->value => 1500,
+                    default => null
+                }
             ]);
         }
     }

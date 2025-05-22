@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\Auth;
 use App\Http\Middleware\AuthWithThrottle;
+use App\Http\Middleware\SetUserTimezone;
 use App\Services\ResponseService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
@@ -19,6 +20,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Middleware for all routes
+        $middleware->append(SetUserTimezone::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         // 400 - Bad Request

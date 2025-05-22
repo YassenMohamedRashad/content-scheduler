@@ -11,6 +11,5 @@ enum PlatformTypesEnum : string
     case Twitter = 'twitter';
     case LinkedIn = 'linkedin';
     case TikTok = 'tiktok';
-    case YouTube = 'youtube';
 
 }

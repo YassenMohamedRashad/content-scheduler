@@ -71,7 +71,7 @@ class AuthController extends Controller
 
             $token = $user->createToken('api-token')->plainTextToken;
 
-            return response()->json(['user' => $user, 'token' => $token]);
+            return response()->json(['user' => $user, 'token' => $token , 'timezone' => config('app.user_timezone')]);
         } catch (\Throwable $th) {
             return ResponseService::error($th->getMessage());
         }
