@@ -34,7 +34,7 @@ class AnalyticsController extends Controller
                 return $platform->pivot && $platform->pivot->status == UserPlatformStatusEnum::Active->value;
             })->count(),
             'recent_activities' => $last_activities,
-            'upcoming_posts' => $upcoming_posts->values(),
+            'upcoming_posts' => $upcoming_posts->values()->take(5),
             ];
             return ResponseService::success("Retrived Successfully", $data);
         } catch (\Throwable $th) {

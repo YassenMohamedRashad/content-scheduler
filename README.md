@@ -1,4 +1,4 @@
-<p align="center" style="font-size : 30px;">
+<p align="center"  style="font-size : 30px;">
   <a href="https://github.com/YassenMohamedRashad/content-scheduler" target="_blank" style="font-size: 2em; font-weight: bold; text-decoration: none; color: white;">
     <span style="font-weight: bold;"><span style="color : #407076">Content</span>Scheduler</span>
   </a>

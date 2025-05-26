@@ -21,9 +21,9 @@ class PostFactory extends Factory
             'image_url' => $this->faker->imageUrl(),
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
-            'scheduled_time' => $this->faker->dateTime,
-            'status' => $this->faker->randomElement(PostStatusEnum::cases()),
-            'user_id' => \App\Models\User::factory(),
+            'scheduled_time' => $this->faker->dateTimeBetween('now', '+1 year'),
+            'status' => $this->faker->randomElement(PostStatusEnum::values()),
+            'user_id' => \App\Models\User::inRandomOrder()->value('id'),
         ];
     }
 }
