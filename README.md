@@ -1,93 +1,111 @@
-<p align="center"><a href="https://laravel.com" style="font-size: 2em; font-weight: bold; text-decoration: none; color: white" target="_blank">
-<span style="font : bold">Content</span>Schedular
-</a></p>
+<p align="center">
+  <a href="https://laravel.com" target="_blank" style="font-size: 2em; font-weight: bold; text-decoration: none; color: white;">
+    <span style="font-weight: bold;">Content Scheduler</span>
+  </a>
+</p>
 
-This guide will help you set up and run this project from scratch, starting with installing PHP and MySQL using XAMPP.
+This guide will help you install and run the Content Scheduler project, which consists of a Laravel (PHP, MySQL) backend and a React (Vite) frontend.
 
 ---
 
 ## 🧰 Prerequisites
 
-Before running this project, ensure the following are installed on your system:
+Make sure you have the following installed:
 
-### 1. ✅ Install XAMPP (includes PHP, MySQL, Apache)
-- Download XAMPP from: https://www.apachefriends.org/index.html
-- Install it and run the **Apache** and **MySQL** services via the XAMPP Control Panel.
+- [XAMPP](https://www.apachefriends.org/index.html) (includes PHP, MySQL, Apache)
+- [Composer](https://getcomposer.org/download/) (PHP dependency manager)
+- [Node.js & npm](https://nodejs.org/)
+- [Git](https://git-scm.com/)
 
-### 2. ✅ Install Composer (PHP dependency manager)
-- Download from: https://getcomposer.org/download/
-- Verify installation by running the following command:
-  ```bash
-  composer --version
-  ```
 ---
 
-## 📁 Clone the Project
-Use Git to clone this repository:
-``` git clone https://github.com/YassenMohamedRashad/content-scheduler ```
-```
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YassenMohamedRashad/content-scheduler
 cd content-scheduler
 ```
-## 📦 Install Laravel Dependencies
-Run the following command to install PHP dependencies:
-```
-composer install
-```
-## ⚙️ Set Up Environment File
-```
-cp .env.example .env
-```
-Then generate the application key:
-```
-php artisan key:generate
-```
-## 🛠 Configure Database
-- Open XAMPP Control Panel and start MySQL.
-- Go to http://localhost/phpmyadmin in your browser.
-- Create a new database (e.g., laravel_app).
-- Update the .env file with your database credentials:
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel_app
-DB_USERNAME=root
-DB_PASSWORD=
-```
-By default, XAMPP uses root with no password.
 
-## 🗃️ Run Migrations (Optional: Seed Data)
-```
-php artisan migrate
-```
-Optional (Seed test data) :
-```
-php artisan db:seed
-```
-## 🔥 Start the Development Server
-```
-php artisan serve
-```
-Then open your browser and go to:
-```
-http://127.0.0.1:8000
-```
-
---- 
---- 
 ---
 
-## Testing Using Pest
-Run following command to initialize testing db:
-```
-php artisan migrate --env=testing
-```
+## ⚙️ Backend Setup (Laravel)
 
-Run following command to run tests:
-```
-php artisan test
-```
-additionaly you can run test for specific file:
-```
-php artisan test --filter=TestFile
-```
+1. **Navigate to the backend folder:**
+
+  ```bash
+  cd backend
+  ```
+
+2. **Install PHP dependencies:**
+
+  ```bash
+  composer install
+  ```
+
+3. **Set up the environment file and generate the application key:**
+
+  ```bash
+  cp .env.example .env
+  php artisan key:generate
+  ```
+
+4. **Configure the database:**
+
+  - Start MySQL from XAMPP Control Panel.
+  - Go to [phpMyAdmin](http://localhost/phpmyadmin) and create a new database (e.g., `laravel_app`).
+  - Update your `.env` file with the database credentials:
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=laravel_app
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+5. **Run database migrations and seeders (very important for the app to work):**
+
+  ```bash
+  php artisan migrate --seed
+  ```
+
+6. **Start the Laravel server:**
+
+  ```bash
+  php artisan serve
+  ```
+
+7. **Start the queue worker:**
+
+  ```bash
+  php artisan queue:work
+  ```
+
+---
+
+## 💻 Frontend Setup (React + Vite)
+
+1. **Navigate to the frontend folder:**
+
+    ```bash
+    cd ../frontend
+    ```
+
+2. **Install Node.js dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+---
+
+Now you can access the backend at [http://127.0.0.1:8000](http://127.0.0.1:8000) and the frontend at the URL shown in your terminal http://localhost:8080.
+
