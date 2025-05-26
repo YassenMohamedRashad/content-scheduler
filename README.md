@@ -109,3 +109,5 @@ cd content-scheduler
 
 Now you can access the backend at [http://127.0.0.1:8000](http://127.0.0.1:8000) and the frontend at the URL shown in your terminal http://localhost:8080.
 
+Api Doc : https://apidog.com/apidoc/shared/fdd5b820-286d-40e0-8502-8a633dc4d70b
+
